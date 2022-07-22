@@ -2,8 +2,8 @@
 rm -rf log
 lxc init images:debian/10 "$1" -c limits.cpu=1 -c limits.memory=128MiB
 # 硬盘大小
-lxc config device override "$1" root size=0.5GB
-lxc config device set "$1" root limits.max 0.5GB
+lxc config device override "$1" root size=1GB
+lxc config device set "$1" root limits.max 1GB
 # IO
 lxc config device set "$1" root limits.read 100MB
 lxc config device set "$1" root limits.write 100MB
@@ -22,10 +22,10 @@ lxc config set "$1" limits.memory.swap.priority 1
 for ((a=1;a<="$2";a++)); do
   lxc copy "$1" "$1"$a
   name="$1"$a
-  # 容器SSH端口 20000起  外网nat端口 30000起 每个25个端口
+  # 容器SSH端口 20000起  外网nat端口 30000起 每个5个端口
   sshn=$(( 20000 + a ))
-  nat1=$(( 30000 + (a-1)*25 + 1))
-  nat2=$(( 30000 + a*25 ))
+  nat1=$(( 30000 + (a-1)*5 + 1))
+  nat2=$(( 30000 + a*5 ))
   ori=$(date | md5sum)
   passwd=${ori: 2: 9}
   lxc start "$1"$a
