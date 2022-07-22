@@ -50,7 +50,7 @@ sleep 0.5
 lxc config set images.auto_update_interval 0
 sleep 0.5
 rm -rf init2.sh
-curl -L https://github.com/spiritLHLS/lxc/raw/main/init.sh -o init2.sh
+curl -L https://github.com/zrmugua/lxc/raw/main/init.sh -o init2.sh
 chmod 777 init2.sh
 apt install dos2unix -y
 dos2unix init2.sh
