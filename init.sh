@@ -2,8 +2,8 @@
 rm -rf log
 lxc init images:debian/10 "$1" -c limits.cpu=1 -c limits.memory=128MiB
 # 硬盘大小
-lxc config device override "$1" root size=512MB
-lxc config device set "$1" root limits.max 512MB
+lxc config device override "$1" root size=400MB
+lxc config device set "$1" root limits.max 400MB
 # IO
 lxc config device set "$1" root limits.read 100MB
 lxc config device set "$1" root limits.write 100MB
