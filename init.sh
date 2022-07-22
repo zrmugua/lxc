@@ -13,7 +13,7 @@ lxc config device set "$1" root limits.write 100iops
 lxc config device override "$1" eth0 limits.egress=300Mbit limits.ingress=300Mbit
 # cpu
 lxc config set "$1" limits.cpu.priority 0
-lxc config set "$1" limits.cpu.allowance 20%
+lxc config set "$1" limits.cpu.allowance 50%
 lxc config set "$1" limits.cpu.allowance 25ms/100ms
 # 内存
 lxc config set "$1" limits.memory.swap true
